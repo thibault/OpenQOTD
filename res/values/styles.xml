@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="QOTD" />
+	<style name="QOTD.Widget">
+		<item name="android:layout_marginLeft">7sp</item>
+		<item name="android:layout_marginRight">7sp</item>
+		<item name="android:layout_marginTop">7sp</item>
+		<item name="android:layout_marginBottom">7sp</item>
+		<item name="android:paddingTop">7sp</item>
+		<item name="android:paddingBottom">7sp</item>
+		<item name="android:paddingLeft">7sp</item>
+		<item name="android:paddingRight">7sp</item>
+		<item name="android:background">@drawable/widget_background</item>
+		
+	</style>
+</resources>
