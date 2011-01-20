@@ -1,5 +1,6 @@
-package com.tj.wikiquote;
+package com.tj.qotd;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -15,6 +16,7 @@ public class QOTDWidget extends AppWidgetProvider {
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+		Log.d("QOTD", "Widget onUpdate");
 		context.startService(new Intent(context, UpdateService.class));
 	}
 
@@ -38,8 +40,8 @@ public class QOTDWidget extends AppWidgetProvider {
             // Update intent
             Intent bcast = new Intent(context, QOTDWidget.class);
             bcast.setAction(ACTION_CHANGE_QUOTATION);
-            PendingIntent pending = PendingIntent(getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT));
-            views.setOnClickPendingIntent(R.id.qotd_widget_layout, pending);
+            PendingIntent pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
+            views.setOnClickPendingIntent(R.layout.qotd_widget_layout, pending);
 
             // Update quote
         	QuoteProvider quoteProvider = new QuoteProvider();

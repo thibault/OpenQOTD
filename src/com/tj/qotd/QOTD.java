@@ -1,4 +1,4 @@
-package com.tj.wikiquote;
+package com.tj.qotd;
 
 import android.app.Activity;
 import android.os.Bundle;

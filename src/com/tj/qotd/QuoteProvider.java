@@ -1,4 +1,4 @@
-package com.tj.wikiquote;
+package com.tj.qotd;
 
 public class QuoteProvider {
 
