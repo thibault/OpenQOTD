@@ -59,7 +59,7 @@ public class QOTDWidget extends AppWidgetProvider {
             Intent bcast = new Intent(context, QOTDWidget.class);
             bcast.setAction(ACTION_CHANGE_QUOTATION);
             PendingIntent pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
-            views.setOnClickPendingIntent(R.id.qotd_layout, pending);
+            views.setOnClickPendingIntent(R.id.qotd_widget_icon, pending);
 
             // Update quote
         	QuoteProvider quoteProvider = new QuoteProvider();
