@@ -11,6 +11,8 @@
 		<item name="android:paddingLeft">7sp</item>
 		<item name="android:paddingRight">7sp</item>
 		<item name="android:background">@drawable/widget_background</item>
-		
+	</style>
+	<style name="QOTD.Quotation">
+	   <item name="android:textSize">12sp</item>
 	</style>
 </resources>

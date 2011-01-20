@@ -29,6 +29,7 @@ public final class R {
     }
     public static final class style {
         public static final int QOTD=0x7f060000;
+        public static final int QOTD_Quotation=0x7f060002;
         public static final int QOTD_Widget=0x7f060001;
     }
     public static final class xml {

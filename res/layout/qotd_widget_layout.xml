@@ -8,6 +8,7 @@
 		android:id="@+id/qotd_widget_text"
 		android:text="@string/qotd_widget_text"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" >
+		android:layout_height="wrap_content"
+		style="@style/QOTD.Quotation" >
 	</TextView>
 </FrameLayout>
