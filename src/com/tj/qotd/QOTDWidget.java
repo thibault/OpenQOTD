@@ -20,6 +20,23 @@ public class QOTDWidget extends AppWidgetProvider {
 		context.startService(new Intent(context, UpdateService.class));
 	}
 
+	@Override
+	public void onReceive(Context context, Intent intent) {
+        Log.d("QOTD", "Widget onReceive action : " + intent.getAction());
+
+        // User requires a new quote
+        if (intent.getAction().equals(ACTION_CHANGE_QUOTATION)) {
+        	Log.d("QOTD", "In change quotation action");
+        	Intent update = new Intent(context, UpdateService.class);
+        	update.setAction(intent.getAction());
+
+            context.startService(update);
+        }
+
+        super.onReceive(context, intent);
+    }
+
+	/** Service dedicated to quotation updating */
 	public static class UpdateService extends Service {
 
 		@Override
@@ -33,6 +50,7 @@ public class QOTDWidget extends AppWidgetProvider {
             manager.updateAppWidget(widget, views);
 		}
 
+		/** Build the ui update */
         public RemoteViews buildUpdate(Context context) {
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.qotd_widget_layout);
@@ -41,7 +59,7 @@ public class QOTDWidget extends AppWidgetProvider {
             Intent bcast = new Intent(context, QOTDWidget.class);
             bcast.setAction(ACTION_CHANGE_QUOTATION);
             PendingIntent pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
-            views.setOnClickPendingIntent(R.layout.qotd_widget_layout, pending);
+            views.setOnClickPendingIntent(R.id.qotd_layout, pending);
 
             // Update quote
         	QuoteProvider quoteProvider = new QuoteProvider();
