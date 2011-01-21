@@ -9,6 +9,6 @@
 		android:bottom="7dp" />
 	
 	<solid
-		android:color="#444" />
+		android:color="#cc444444" />
 		
 </shape>
