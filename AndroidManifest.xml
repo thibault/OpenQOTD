@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.tj.qotd" android:versionCode="1" android:versionName="1.0">
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+		android:debuggable="true">
 		<activity android:name=".QOTD" android:label="@string/app_name">
 		</activity>
 
 		<receiver android:name=".QOTDWidget">
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-				<action android:name="com.tj.qotd.CHANGE_QUOTATION" />
 				<action android:name="com.tj.qotd.SHOW_QUOTATION" />
 			</intent-filter>
 			<meta-data android:name="android.appwidget.provider"

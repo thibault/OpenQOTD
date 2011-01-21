@@ -12,7 +12,6 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 public class QOTDWidget extends AppWidgetProvider {
-    public static final String ACTION_CHANGE_QUOTATION = "com.tj.qotd.CHANGE_QUOTATION";
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
 
 	@Override
@@ -25,20 +24,9 @@ public class QOTDWidget extends AppWidgetProvider {
 	public void onReceive(Context context, Intent intent) {
         Log.d("QOTD", "Widget onReceive action : " + intent.getAction());
 
-        // User requires a new quote
-        if (intent.getAction().equals(ACTION_CHANGE_QUOTATION)) {
-        	Log.d("QOTD", "In change quotation action");
-        	Intent update = new Intent(context, UpdateService.class);
-        	update.setAction(intent.getAction());
-            context.startService(update);
-            
-        // User wants to show current quote
-        } else if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
-            Log.d("QOTD", "In show quotation action");
-            QuoteProvider quoteProvider = new QuoteProvider();
+        if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
+            Log.d("QOTD", "In show quote action");
             Intent show = new Intent(context, QOTD.class);
-            show.putExtra("quote", quoteProvider.getCurrentQuote());
-            Log.d("QOTD", quoteProvider.getCurrentQuote());
             show.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(show);
         }
@@ -65,21 +53,15 @@ public class QOTDWidget extends AppWidgetProvider {
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.qotd_widget_layout);
 
-            // Intent to change quote
-            Intent bcast = new Intent(context, QOTDWidget.class);
-            bcast.setAction(ACTION_CHANGE_QUOTATION);
-            PendingIntent pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
-            views.setOnClickPendingIntent(R.id.qotd_widget_icon, pending);
-
             // Intent to show full quote
-            bcast = new Intent(context, QOTDWidget.class);
+            Intent bcast = new Intent(context, QOTDWidget.class);
             bcast.setAction(ACTION_SHOW_QUOTE);
-            pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
-            views.setOnClickPendingIntent(R.id.qotd_widget_text, pending);
+            PendingIntent pending = PendingIntent.getBroadcast(context, 0, bcast, PendingIntent.FLAG_UPDATE_CURRENT);
+            views.setOnClickPendingIntent(R.id.qotd_layout, pending);
 
             // Update quote
         	QuoteProvider quoteProvider = new QuoteProvider();
-            views.setTextViewText(R.id.qotd_widget_text, quoteProvider.getRandomQuote());
+            views.setTextViewText(R.id.qotd_widget_text, quoteProvider.getCurrentQuote());
 
             return views;
         }

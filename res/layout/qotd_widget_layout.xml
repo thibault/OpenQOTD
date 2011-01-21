@@ -11,11 +11,4 @@
 		android:layout_height="wrap_content"
 		style="@style/QOTD.Quotation" >
 	</TextView>
-	<ImageView
-	   android:id="@+id/qotd_widget_icon"
-	   android:layout_width="wrap_content"
-	   android:layout_height="wrap_content"
-	   android:layout_gravity="bottom|right"
-	   android:background="@android:drawable/ic_media_next" >
-	</ImageView>
 </FrameLayout>

@@ -3,4 +3,6 @@
     <string name="hello">Hello World, QOTD!</string>
     <string name="app_name">QOTD</string>
     <string name="qotd_widget_text">Loading quote, please wait…</string>
+<string name="update_quote">Update quote</string>
+<string name="quit">Quit</string>
 </resources>
