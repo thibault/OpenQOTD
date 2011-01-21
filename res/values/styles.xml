@@ -13,6 +13,7 @@
 		<item name="android:background">@drawable/widget_background</item>
 	</style>
 	<style name="QOTD.Quotation">
-	   <item name="android:textSize">12sp</item>
+	   <item name="android:textSize">13sp</item>
+	   <item name="android:textColor">#fff</item>
 	</style>
 </resources>
