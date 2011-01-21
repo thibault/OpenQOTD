@@ -13,6 +13,8 @@ import android.widget.RemoteViews;
 
 public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
+    
+    public static final int MAX_QUOTE_LEN_IN_WIDGET = 130;
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -61,7 +63,11 @@ public class QOTDWidget extends AppWidgetProvider {
 
             // Update quote
         	QuoteProvider quoteProvider = new QuoteProvider();
-            views.setTextViewText(R.id.qotd_widget_text, quoteProvider.getCurrentQuote());
+        	String currentQuote = quoteProvider.getCurrentQuote();
+        	if (currentQuote.length() > MAX_QUOTE_LEN_IN_WIDGET) {
+        		currentQuote = currentQuote.substring(0, MAX_QUOTE_LEN_IN_WIDGET) + "…";
+        	}
+            views.setTextViewText(R.id.qotd_widget_text, currentQuote);
 
             return views;
         }
