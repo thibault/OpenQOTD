@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="quote_fixtures">
+		<item>Offrir l\'amitié à qui veut l\'amour, c\'est donner du pain à qui meurt de soif.|Proverbe espagnol</item>
+		<item>J\'ai décidé d\'être heureux parce que c\'est bon pour la santé.|Voltaire</item>
+		<item>A quoi bon soulever des montagnes quand il est si simple de passer par-dessus ?|Boris Vian</item>
+		<item>Il vaut mieux être cocu que veuf : il y a moins de formalités !|Alphonse Allais</item>
+		<item>Je tiens beaucoup à ma montre, c\'est mon grand-père qui me l\'a vendue sur son lit de mort.|Woody Allen</item>
+	</string-array>
+</resources>
