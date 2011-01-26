@@ -13,17 +13,17 @@ import android.widget.RemoteViews;
 
 public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
-    
+
     public static final int MAX_QUOTE_LEN_IN_WIDGET = 130;
 
-	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-		Log.d("QOTD", "Widget onUpdate");
-		context.startService(new Intent(context, UpdateService.class));
-	}
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        Log.d("QOTD", "Widget onUpdate");
+        context.startService(new Intent(context, UpdateService.class));
+    }
 
-	@Override
-	public void onReceive(Context context, Intent intent) {
+    @Override
+    public void onReceive(Context context, Intent intent) {
         Log.d("QOTD", "Widget onReceive action : " + intent.getAction());
 
         if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
@@ -36,21 +36,21 @@ public class QOTDWidget extends AppWidgetProvider {
         super.onReceive(context, intent);
     }
 
-	/** Service dedicated to quotation updating */
-	public static class UpdateService extends Service {
+    /** Service dedicated to quotation updating */
+    public static class UpdateService extends Service {
 
-		@Override
-		public void onStart(Intent intent, int startId) {
-			Log.d("QOTD", "Starting update service");
+        @Override
+        public void onStart(Intent intent, int startId) {
+            Log.d("QOTD", "Starting update service");
 
-			RemoteViews views = buildUpdate(this);
+            RemoteViews views = buildUpdate(this);
 
-			ComponentName widget = new ComponentName(this, QOTDWidget.class);
+            ComponentName widget = new ComponentName(this, QOTDWidget.class);
             AppWidgetManager manager = AppWidgetManager.getInstance(this);
             manager.updateAppWidget(widget, views);
-		}
+        }
 
-		/** Build the ui update */
+        /** Build the ui update */
         public RemoteViews buildUpdate(Context context) {
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.qotd_widget_layout);
@@ -62,19 +62,19 @@ public class QOTDWidget extends AppWidgetProvider {
             views.setOnClickPendingIntent(R.id.qotd_layout, pending);
 
             // Update quote
-        	QuoteProvider quoteProvider = new QuoteProvider();
-        	String currentQuote = quoteProvider.getCurrentQuote();
-        	if (currentQuote.length() > MAX_QUOTE_LEN_IN_WIDGET) {
-        		currentQuote = currentQuote.substring(0, MAX_QUOTE_LEN_IN_WIDGET) + "…";
-        	}
+            QuoteProvider quoteProvider = new QuoteProvider(context);
+            String currentQuote = quoteProvider.getCurrentQuote();
+            if (currentQuote.length() > MAX_QUOTE_LEN_IN_WIDGET) {
+                currentQuote = currentQuote.substring(0, MAX_QUOTE_LEN_IN_WIDGET) + "…";
+            }
             views.setTextViewText(R.id.qotd_widget_text, currentQuote);
 
             return views;
         }
 
-		@Override
-		public IBinder onBind(Intent intent) {
-			return null;
-		}
-	}
+        @Override
+        public IBinder onBind(Intent intent) {
+            return null;
+        }
+    }
 }
