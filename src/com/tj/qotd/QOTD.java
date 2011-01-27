@@ -51,6 +51,9 @@ public class QOTD extends Activity {
         case R.id.update_quote:
             updateQuote();
             break;
+        case R.id.settings:
+            startActivityForResult(new Intent(this, QOTDPreferences.class), 1);
+            break;
         }
 
         return true;
