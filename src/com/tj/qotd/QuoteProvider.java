@@ -118,4 +118,8 @@ public class QuoteProvider {
         c.close();
         return res;
     }
+
+    /** Fetch new quotes from network and insert it into db */
+    public void updateQuoteDb() {
+    }
 }
