@@ -51,9 +51,6 @@ public class QOTD extends Activity {
         case R.id.update_quote:
             updateQuote();
             break;
-        case R.id.fetch_quotes:
-            mQuoteProvider.updateQuoteDb();
-            break;
         case R.id.settings:
             startActivityForResult(new Intent(this, QOTDPreferences.class), 1);
             break;

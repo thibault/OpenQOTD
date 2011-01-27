@@ -4,10 +4,6 @@
           android:icon="@drawable/ic_menu_refresh"
           android:title="@string/update_quote" />
 
-    <item android:id="@+id/fetch_quotes"
-          android:icon="@drawable/ic_menu_add"
-          android:title="@string/fetch_new_quotes" />
-
     <item android:id="@+id/settings"
           android:icon="@drawable/ic_menu_preferences"
           android:title="@string/settings" />
