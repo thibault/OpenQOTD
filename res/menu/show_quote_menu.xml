@@ -3,4 +3,8 @@
     <item android:id="@+id/update_quote"
           android:icon="@drawable/ic_menu_refresh"
           android:title="@string/update_quote" />
+
+    <item android:id="@+id/settings"
+          android:icon="@drawable/ic_menu_preferences"
+          android:title="@string/settings" />
 </menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="quote_lang"
+        android:title="@string/title_lang_preference"
+        android:summary="@string/summary_lang_preference"
+        android:entries="@array/entries_lang_preference"
+        android:entryValues="@array/entryvalues_lang_preference"
+        android:dialogTitle="@string/title_lang_preference" />
+
+    <ListPreference
+        android:key="quote_update_frequency"
+        android:title="@string/title_freq_preference"
+        android:summary="@string/summary_freq_preference"
+        android:entries="@array/entries_freq_preference"
+        android:entryValues="@array/entryvalues_freq_preference"
+        android:dialogTitle="@string/title_freq_preference" />
+</PreferenceScreen>

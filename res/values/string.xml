@@ -3,6 +3,14 @@
     <string name="hello">Hello World, QOTD!</string>
     <string name="app_name">QOTD</string>
     <string name="qotd_widget_text">Loading quote, please wait…</string>
-<string name="update_quote">Update quote</string>
-<string name="quit">Quit</string>
+    <string name="update_quote">Update quote</string>
+    <string name="quit">Quit</string>
+    <string name="settings">Settings</string>
+
+    <!-- preferences -->
+    <string name="title_lang_preference">Language</string>
+    <string name="summary_lang_preference">Choose quotes language</string>
+    <string name="title_freq_preference">Update frequency</string>
+    <string name="summary_freq_preference">Select duration between widget update</string>
+
 </resources>

@@ -7,4 +7,30 @@
 		<item>Il vaut mieux être cocu que veuf : il y a moins de formalités !|Alphonse Allais</item>
 		<item>Je tiens beaucoup à ma montre, c\'est mon grand-père qui me l\'a vendue sur son lit de mort.|Woody Allen</item>
 	</string-array>
+
+    <string-array name="entries_lang_preference">
+        <item>English</item>
+        <item>Français</item>
+    </string-array>
+
+    <string-array name="entryvalues_lang_preference">
+        <item>en</item>
+        <item>fr</item>
+    </string-array>
+
+    <string-array name="entries_freq_preference">
+        <item>00:30</item>
+        <item>01:00</item>
+        <item>02:00</item>
+        <item>06:00</item>
+        <item>24:00</item>
+    </string-array>
+
+    <string-array name="entryvalues_freq_preference">
+        <item>1800</item>
+        <item>3600</item>
+        <item>7200</item>
+        <item>21600</item>
+        <item>86400</item>
+    </string-array>
 </resources>
