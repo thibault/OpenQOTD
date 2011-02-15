@@ -1,6 +1,5 @@
 package com.tj.qotd;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -30,7 +29,7 @@ public class QuoteProvider {
      * Fetch a previously generated quote
      */
     public String getCurrentQuote() {
-        SharedPreferences sp = mContext.getSharedPreferences("qotd", Activity.MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
         int currentQuoteId = sp.getInt("qotd.current_quote_id", -1);
 
         if (currentQuoteId < 0) {
