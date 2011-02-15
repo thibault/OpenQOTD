@@ -122,7 +122,10 @@ public class QuoteDatabase {
         qb.setTables(QUOTES_TABLE_NAME);
         qb.setProjectionMap(mColumnMap);
 
-        Cursor c = qb.query(mDbHelper.getReadableDatabase(), null, null, null, null, null, "RANDOM()", "1");
+        qb.appendWhere("lang == ?");
+        String[] whereArgs = new String[] { lang };
+
+        Cursor c = qb.query(mDbHelper.getReadableDatabase(), null, null, whereArgs, null, null, "RANDOM()", "1");
         Log.e("QOTD", "cursor : " + c.getCount());
 
         if (!c.moveToFirst()) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 /**
@@ -52,8 +53,8 @@ public class QuoteProvider {
      */
     public String resetQuote() {
 
-        SharedPreferences sp = mContext.getSharedPreferences("qotd", Activity.MODE_PRIVATE);
-        String lang = sp.getString("lang", "en");
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
+        String lang = sp.getString("quote_lang", "en");
 
         Cursor c = mQuoteDatabase.getRandomQuote(lang);
 
