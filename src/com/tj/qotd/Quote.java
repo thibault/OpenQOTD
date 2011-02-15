@@ -12,10 +12,4 @@ public final class Quote implements BaseColumns {
      * <p>type : TEXT</p>
      */
     public static final String QUOTE = "quote";
-
-    /**
-     * The Quote author
-     * <p>type: TEXT</p>
-     */
-    public static final String AUTHOR = "author";
 }
