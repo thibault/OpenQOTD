@@ -56,7 +56,7 @@ public class QuoteProvider {
         else
         {
             Cursor c = mQuoteDatabase.getQuote(currentQuoteId);
-            if (c != null) {
+            if (cursor.moveToFirst()) {
               return getQuoteFromCursor(c);
             }
             else {
@@ -75,7 +75,7 @@ public class QuoteProvider {
 
         Cursor c = mQuoteDatabase.getRandomQuote(lang);
 
-        if (c != null && c.moveToFirst()) {
+        if (c.moveToFirst()) {
             int currentQuoteId = c.getInt(COLUMN_QUOTE_ID_INDEX);
             Log.e("QOTD", "reset id : " + currentQuoteId);
             Editor editor = sp.edit();

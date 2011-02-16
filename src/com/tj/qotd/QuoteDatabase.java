@@ -101,7 +101,11 @@ public class QuoteDatabase {
         /* This builds a query that looks like:
          *     SELECT <columns> FROM <table> WHERE rowid = <rowId>
          */
-        return query(selection, selectionArgs);
+        Cursor c = query(selection, selectionArgs);
+        if (!c.moveToFirst()) {
+            c.close();
+        }
+        return c;
     }
 
     /**
@@ -122,11 +126,8 @@ public class QuoteDatabase {
         Cursor cursor = builder.query(mDbHelper.getReadableDatabase(),
                 null, selection, selectionArgs, null, null, null);
 
-        if (cursor == null) {
-            return null;
-        } else if (!cursor.moveToFirst()) {
+        if (!cursor.moveToFirst()) {
             cursor.close();
-            return null;
         }
         return cursor;
     }
@@ -148,7 +149,6 @@ public class QuoteDatabase {
 
         if (!c.moveToFirst()) {
             c.close();
-            return null;
         }
         return c;
     }
@@ -180,8 +180,6 @@ public class QuoteDatabase {
 
         /** This method has to be called after constructor */
         public void initializeDatabase() {
-            Log.d("QOTD", "Initializing db");
-
             // Make sure we request database, to initialize creation variables
             getWritableDatabase();
 
