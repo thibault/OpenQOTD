@@ -18,6 +18,7 @@
 
 package com.tj.qotd;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -25,7 +26,10 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -37,7 +41,6 @@ public class QOTDWidget extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("QOTD", "Widget onReceive action : " + intent.getAction());
 
         // When we tap on the widget
         if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
@@ -86,6 +89,9 @@ public class QOTDWidget extends AppWidgetProvider {
             ComponentName widget = new ComponentName(this, QOTDWidget.class);
             AppWidgetManager manager = AppWidgetManager.getInstance(this);
             manager.updateAppWidget(widget, views);
+
+            // Setting up alarm
+            startAlarm(this);
         }
 
         /** Build the ui update */
@@ -107,6 +113,24 @@ public class QOTDWidget extends AppWidgetProvider {
             views.setTextViewText(R.id.qotd_widget_text, currentQuote);
 
             return views;
+        }
+
+        /** Configure alarm to update quote */
+        private void startAlarm(Context context) {
+
+            // Get update frequency
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+            int frequency = Integer.parseInt(sp.getString("quote_update_frequency", "8640000"));
+            Log.d("QOTD", "Setting next update in : " + frequency);
+
+            // Update quote intent
+            Intent intent = new Intent(context, QOTDWidget.class);
+            intent.setAction(ACTION_CHANGE_QUOTE);
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            // Set up alarm
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            am.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + frequency, pi);
         }
 
         @Override
