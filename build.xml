@@ -59,6 +59,13 @@
     <target name="-post-compile">
     </target>
 -->
+    <target name="-pre-build">
+        <echo message="Building db assets" />
+        <exec executable="libs/quote_importer.py">
+            <arg value="assets/quotes" />
+            <arg value="assets/qotd.db.mp3" />
+        </exec>
+    </target>
 
 
     <!-- Execute the Android Setup task that will setup some properties
