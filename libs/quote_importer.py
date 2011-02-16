@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # © Copyright 2011 Thibault Jouannic <thibault@jouannic.fr>. All Rights Reserved.
 #  This file is part of OpenQOTD.
