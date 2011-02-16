@@ -31,24 +31,36 @@ import android.widget.RemoteViews;
 
 public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
+    public static final String ACTION_CHANGE_QUOTE = "com.tj.qotd.CHANGE_QUOTE";
 
     public static final int MAX_QUOTE_LEN_IN_WIDGET = 130;
-
-    @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        Log.d("QOTD", "Widget onUpdate");
-        context.startService(new Intent(context, UpdateService.class));
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d("QOTD", "Widget onReceive action : " + intent.getAction());
 
+        // When we tap on the widget
         if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
-            Log.d("QOTD", "In show quote action");
+            Log.d("QOTD", "Widget : show quote");
             Intent show = new Intent(context, QOTD.class);
             show.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(show);
+        }
+
+        // New quote requested
+        else if (intent.getAction().equals(ACTION_CHANGE_QUOTE)) {
+            Log.d("QOTD", "Widget : change quote");
+            Intent update = new Intent(context, UpdateService.class);
+            update.setAction(intent.getAction());
+            context.startService(update);
+        }
+
+        // Updating widget
+        else if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+            Log.d("QOTD", "Widget : update");
+            Intent update = new Intent(context, UpdateService.class);
+            update.setAction(intent.getAction());
+            context.startService(update);
         }
 
         super.onReceive(context, intent);
@@ -57,12 +69,20 @@ public class QOTDWidget extends AppWidgetProvider {
     /** Service dedicated to quotation updating */
     public static class UpdateService extends Service {
 
+        private QuoteProvider mQuoteProvider;
+
         @Override
         public void onStart(Intent intent, int startId) {
             Log.d("QOTD", "Starting update service");
+            mQuoteProvider = new QuoteProvider(this);
 
+            // if a new quote is required
+            if (intent.getAction().equals(ACTION_CHANGE_QUOTE)) {
+                mQuoteProvider.resetQuote();
+            }
+
+            // Rebuilding widget
             RemoteViews views = buildUpdate(this);
-
             ComponentName widget = new ComponentName(this, QOTDWidget.class);
             AppWidgetManager manager = AppWidgetManager.getInstance(this);
             manager.updateAppWidget(widget, views);
@@ -80,8 +100,7 @@ public class QOTDWidget extends AppWidgetProvider {
             views.setOnClickPendingIntent(R.id.qotd_layout, pending);
 
             // Update quote
-            QuoteProvider quoteProvider = new QuoteProvider(context);
-            String currentQuote = quoteProvider.getCurrentQuote();
+            String currentQuote = mQuoteProvider.getCurrentQuote();
             if (currentQuote.length() > MAX_QUOTE_LEN_IN_WIDGET) {
                 currentQuote = currentQuote.substring(0, MAX_QUOTE_LEN_IN_WIDGET) + "…";
             }
