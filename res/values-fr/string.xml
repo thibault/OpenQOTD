@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenQOTD</string>
+    <string name="qotd_widget_text">Chargement, patience…</string>
+    <string name="update_quote">Nouvelle citation</string>
+    <string name="settings">Préférences</string>
+    <string name="about">À propos</string>
+    <string name="no_quote_found">Aucune citation trouvée.</string>
+    <string name="app_description">Widget affichant des citations diverses.</string>
+    <string name="app_credits">Application développée par Thibault Jouannic\nhttp://thibault.jouannic.fr\nhttp://miximum.fr\n\nCette appli est disponible sous licence GPLv3. Source disponible sur github.\nhttps://github.com/thibault/OpenQOTD</string>
+
+
+    <!-- preferences -->
+    <string name="title_lang_preference">Langue</string>
+    <string name="summary_lang_preference">Langue des citations</string>
+    <string name="title_freq_preference">Fréquence des mises à jour</string>
+    <string name="summary_freq_preference">Intervalle entre deux mises à jour</string>
+
+</resources>

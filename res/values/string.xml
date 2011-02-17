@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, QOTD!</string>
     <string name="app_name">OpenQOTD</string>
     <string name="qotd_widget_text">Loading quote, please wait…</string>
     <string name="update_quote">Change quote</string>
-    <string name="fetch_new_quotes">Update quote db</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="no_quote_found">No quote found.</string>

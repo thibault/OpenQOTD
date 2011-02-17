@@ -93,16 +93,16 @@ public class QOTD extends Activity {
     /** Show an about dialog that cites data sources. */
     protected void showAbout() {
         // Inflate the about message contents
-        View messageView = getLayoutInflater().inflate(R.layout.about, null, false);
+        View about = getLayoutInflater().inflate(R.layout.about, null, false);
 
         // Use default color for links
-        TextView textView = (TextView) messageView.findViewById(R.id.about_credits);
+        TextView textView = (TextView) about.findViewById(R.id.about_credits);
         int defaultColor = textView.getTextColors().getDefaultColor();
         textView.setTextColor(defaultColor);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.app_name);
-        builder.setView(messageView);
+        builder.setView(about);
         builder.create();
         builder.show();
     }
