@@ -8,6 +8,9 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="no_quote_found">No quote found.</string>
+    <string name="app_description">Widget app to display some random quotes.</string>
+    <string name="app_credits">This app was developed by Thibault Jouannic\nhttp://thibault.jouannic.fr\nhttp://miximum.fr\n\nThis app is released under the GPLv3. Source available on github\nhttps://github.com/thibault/OpenQOTD</string>
+
 
     <!-- preferences -->
     <string name="title_lang_preference">Language</string>

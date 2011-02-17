@@ -19,6 +19,7 @@
 package com.tj.qotd;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -74,6 +76,7 @@ public class QOTD extends Activity {
             startActivityForResult(new Intent(this, QOTDPreferences.class), REQUEST_PREFERENCES);
             break;
         case R.id.about:
+            showAbout();
             break;
         }
 
@@ -87,6 +90,22 @@ public class QOTD extends Activity {
         }
     }
 
+    /** Show an about dialog that cites data sources. */
+    protected void showAbout() {
+        // Inflate the about message contents
+        View messageView = getLayoutInflater().inflate(R.layout.about, null, false);
+
+        // Use default color for links
+        TextView textView = (TextView) messageView.findViewById(R.id.about_credits);
+        int defaultColor = textView.getTextColors().getDefaultColor();
+        textView.setTextColor(defaultColor);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.app_name);
+        builder.setView(messageView);
+        builder.create();
+        builder.show();
+    }
 
     /** Requires a new quote, updates ui and widget */
     public void updateQuote() {
