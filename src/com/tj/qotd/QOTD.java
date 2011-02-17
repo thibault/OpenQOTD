@@ -86,11 +86,7 @@ public class QOTD extends Activity {
 
         // Send update message via broadcast intent
         Context context = getApplicationContext();
-        AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
-        ComponentName widgetComponent = new ComponentName(context, QOTDWidget.class);
-        int[] widgetIds = widgetManager.getAppWidgetIds(widgetComponent);
-        Intent update = new Intent();
-        update.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds);
+        Intent update = new Intent(context, QOTDWidget.class);
         update.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         context.sendBroadcast(update);
     }
