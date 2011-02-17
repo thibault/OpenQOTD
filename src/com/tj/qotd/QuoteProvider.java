@@ -56,7 +56,7 @@ public class QuoteProvider {
         else
         {
             Cursor c = mQuoteDatabase.getQuote(currentQuoteId);
-            if (cursor.moveToFirst()) {
+            if (c.moveToFirst()) {
               return getQuoteFromCursor(c);
             }
             else {
