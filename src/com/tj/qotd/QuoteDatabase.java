@@ -145,7 +145,6 @@ public class QuoteDatabase {
         String[] whereArgs = new String[] { lang };
 
         Cursor c = qb.query(mDbHelper.getReadableDatabase(), null, null, whereArgs, null, null, "RANDOM()", "1");
-        Log.e("QOTD", "cursor : " + c.getCount());
 
         if (!c.moveToFirst()) {
             c.close();

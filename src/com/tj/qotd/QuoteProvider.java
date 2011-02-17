@@ -23,7 +23,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 /**
  * Single entry point to get some quotes
@@ -77,7 +76,6 @@ public class QuoteProvider {
 
         if (c.moveToFirst()) {
             int currentQuoteId = c.getInt(COLUMN_QUOTE_ID_INDEX);
-            Log.e("QOTD", "reset id : " + currentQuoteId);
             Editor editor = sp.edit();
             editor.putInt("qotd.current_quote_id", currentQuoteId);
             editor.commit();
