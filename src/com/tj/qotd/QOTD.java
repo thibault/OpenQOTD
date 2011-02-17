@@ -20,7 +20,6 @@ package com.tj.qotd;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
