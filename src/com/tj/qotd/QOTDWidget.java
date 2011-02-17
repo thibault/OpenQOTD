@@ -130,6 +130,7 @@ public class QOTDWidget extends AppWidgetProvider {
 
             // Set up alarm
             AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            am.cancel(pi);
             am.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + frequency, pi);
         }
 
