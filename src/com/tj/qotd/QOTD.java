@@ -33,6 +33,8 @@ public class QOTD extends Activity {
 
     private QuoteProvider mQuoteProvider;
 
+    private static int REQUEST_PREFERENCES;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,7 @@ public class QOTD extends Activity {
             updateQuote();
             break;
         case R.id.settings:
-            startActivityForResult(new Intent(this, QOTDPreferences.class), 1);
+            startActivityForResult(new Intent(this, QOTDPreferences.class), REQUEST_PREFERENCES);
             break;
         case R.id.about:
             break;
@@ -77,6 +79,14 @@ public class QOTD extends Activity {
 
         return true;
     }
+
+    /** Update quotes if preferences changed */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == QOTDPreferences.RESULT_UPDATED) {
+            updateQuote();
+        }
+    }
+
 
     /** Requires a new quote, updates ui and widget */
     public void updateQuote() {
