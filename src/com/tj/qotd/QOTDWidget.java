@@ -37,7 +37,7 @@ public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
     public static final String ACTION_CHANGE_QUOTE = "com.tj.qotd.CHANGE_QUOTE";
 
-    public static final int MAX_QUOTE_LEN_IN_WIDGET = 130;
+    public static final int MAX_QUOTE_LEN_IN_WIDGET = 135;
 
     @Override
     public void onReceive(Context context, Intent intent) {
