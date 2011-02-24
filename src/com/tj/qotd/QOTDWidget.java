@@ -43,7 +43,7 @@ public class QOTDWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
 
         // When we tap on the widget
-        if (intent.getAction().equals(ACTION_SHOW_QUOTE)) {
+        if (ACTION_SHOW_QUOTE.equals(intent.getAction())) {
             Log.d("QOTD", "Widget : show quote");
             Intent show = new Intent(context, QOTD.class);
             show.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -51,7 +51,7 @@ public class QOTDWidget extends AppWidgetProvider {
         }
 
         // New quote requested
-        else if (intent.getAction().equals(ACTION_CHANGE_QUOTE)) {
+        else if (ACTION_CHANGE_QUOTE.equals(intent.getAction())) {
             Log.d("QOTD", "Widget : change quote");
             Intent update = new Intent(context, UpdateService.class);
             update.setAction(intent.getAction());
@@ -59,7 +59,7 @@ public class QOTDWidget extends AppWidgetProvider {
         }
 
         // Updating widget
-        else if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+        else if (AppWidgetManager.ACTION_APPWIDGET_UPDATE.equals(intent.getAction())) {
             Log.d("QOTD", "Widget : update");
             Intent update = new Intent(context, UpdateService.class);
             update.setAction(intent.getAction());
@@ -80,7 +80,7 @@ public class QOTDWidget extends AppWidgetProvider {
             mQuoteProvider = new QuoteProvider(this);
 
             // if a new quote is required
-            if (intent.getAction().equals(ACTION_CHANGE_QUOTE)) {
+            if (ACTION_CHANGE_QUOTE.equals(intent.getAction())) {
                 mQuoteProvider.resetQuote();
             }
 
