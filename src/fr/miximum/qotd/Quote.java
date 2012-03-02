@@ -16,10 +16,9 @@
  *  along with OpenQOTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.tj.qotd;
+package fr.miximum.qotd;
 
 import android.provider.BaseColumns;
-import fr.miximum.qotd.R;
 
 public final class Quote implements BaseColumns {
 

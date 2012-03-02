@@ -16,7 +16,7 @@
  *  along with OpenQOTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.tj.qotd;
+package fr.miximum.qotd;
 
 import android.content.Context;
 import android.content.SharedPreferences;

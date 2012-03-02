@@ -16,7 +16,7 @@
  *  along with OpenQOTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.tj.qotd;
+package fr.miximum.qotd;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -32,11 +32,10 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
-import fr.miximum.qotd.R;
 
 public class QOTDWidget extends AppWidgetProvider {
-    public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
-    public static final String ACTION_CHANGE_QUOTE = "com.tj.qotd.CHANGE_QUOTE";
+    public static final String ACTION_SHOW_QUOTE = "fr.miximum.qotd.SHOW_QUOTE";
+    public static final String ACTION_CHANGE_QUOTE = "fr.miximum.qotd.CHANGE_QUOTE";
 
     public static final int MAX_QUOTE_LEN_IN_WIDGET = 135;
 

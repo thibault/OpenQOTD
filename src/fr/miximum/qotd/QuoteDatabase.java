@@ -16,24 +16,19 @@
  *  along with OpenQOTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.tj.qotd;
+package fr.miximum.qotd;
 
 import android.content.Context;
-
 import android.database.Cursor;
-
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
-
 import android.util.Log;
 
-import fr.miximum.qotd.R;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.util.HashMap;
 
 public class QuoteDatabase {
