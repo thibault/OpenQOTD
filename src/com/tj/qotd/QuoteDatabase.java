@@ -28,6 +28,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 
 import android.util.Log;
 
+import fr.miximum.qotd.R;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.IOException;

@@ -32,6 +32,7 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
+import fr.miximum.qotd.R;
 
 public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "com.tj.qotd.SHOW_QUOTE";
@@ -75,7 +76,7 @@ public class QOTDWidget extends AppWidgetProvider {
         private QuoteProvider mQuoteProvider;
 
         @Override
-        public void onStart(Intent intent, int startId) {
+        public int onStartCommand(Intent intent, int startId, int flag) {
             Log.d("QOTD", "Starting update service");
             mQuoteProvider = new QuoteProvider(this);
 
@@ -92,6 +93,8 @@ public class QOTDWidget extends AppWidgetProvider {
 
             // Setting up alarm
             startAlarm(this);
+
+            return START_NOT_STICKY;
         }
 
         /** Build the ui update */

@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
+import fr.miximum.qotd.R;
 
 public class QOTDPreferences extends PreferenceActivity {
 

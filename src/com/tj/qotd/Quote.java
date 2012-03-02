@@ -19,6 +19,7 @@
 package com.tj.qotd;
 
 import android.provider.BaseColumns;
+import fr.miximum.qotd.R;
 
 public final class Quote implements BaseColumns {
 

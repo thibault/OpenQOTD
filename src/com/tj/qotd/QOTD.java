@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import fr.miximum.qotd.R;
 
 
 public class QOTD extends Activity {
