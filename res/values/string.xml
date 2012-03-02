@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenQOTD</string>
+    <string name="app_name">Miximum quotes</string>
     <string name="qotd_widget_text">Loading quote, please wait…</string>
     <string name="update_quote">Change quote</string>
     <string name="settings">Settings</string>

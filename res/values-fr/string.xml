@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenQOTD</string>
+    <string name="app_name">Miximum Citations</string>
     <string name="qotd_widget_text">Chargement, patience…</string>
     <string name="update_quote">Nouvelle citation</string>
     <string name="settings">Préférences</string>
