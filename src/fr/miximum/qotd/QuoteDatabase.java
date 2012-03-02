@@ -214,6 +214,7 @@ public class QuoteDatabase {
 
                 // Access the db to set the access timestamp (prevents a "corrupted" error)
                 getWritableDatabase();
+                close();
             } catch (IOException ioe) {
                 Log.e("QOTD", "Cannot create db : " + ioe.getMessage());
             }
