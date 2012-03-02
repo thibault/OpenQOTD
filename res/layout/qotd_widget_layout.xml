@@ -11,8 +11,10 @@
 		android:id="@+id/qotd_widget_text"
 		android:text="@string/qotd_widget_text"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		style="@style/QOTD.Quotation" >
+		android:layout_height="fill_parent"
+		style="@style/QOTD.Quotation"
+        android:singleLine="false"
+        android:gravity="center|center_vertical">
 	</TextView>
 
 </FrameLayout>

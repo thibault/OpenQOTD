@@ -37,8 +37,6 @@ public class QOTDWidget extends AppWidgetProvider {
     public static final String ACTION_SHOW_QUOTE = "fr.miximum.qotd.SHOW_QUOTE";
     public static final String ACTION_CHANGE_QUOTE = "fr.miximum.qotd.CHANGE_QUOTE";
 
-    public static final int MAX_QUOTE_LEN_IN_WIDGET = 135;
-
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -109,9 +107,6 @@ public class QOTDWidget extends AppWidgetProvider {
 
             // Update quote
             String currentQuote = mQuoteProvider.getCurrentQuote();
-            if (currentQuote.length() > MAX_QUOTE_LEN_IN_WIDGET) {
-                currentQuote = currentQuote.substring(0, MAX_QUOTE_LEN_IN_WIDGET) + "…";
-            }
             views.setTextViewText(R.id.qotd_widget_text, currentQuote);
 
             return views;

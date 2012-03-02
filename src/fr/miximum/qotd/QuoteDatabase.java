@@ -116,15 +116,19 @@ public class QuoteDatabase {
          * by which the ContentProvider does not need to know the real column names
          */
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
         builder.setTables(QUOTES_TABLE_NAME);
         builder.setProjectionMap(mColumnMap);
 
-        Cursor cursor = builder.query(mDbHelper.getReadableDatabase(),
+        Cursor cursor = builder.query(db,
                 null, selection, selectionArgs, null, null, null);
 
         if (!cursor.moveToFirst()) {
             cursor.close();
         }
+
+        db.close();
         return cursor;
     }
 
@@ -184,6 +188,7 @@ public class QuoteDatabase {
             else if (upgradeDatabase) {
                 upgradeDatabase();
             }
+            close();
         }
 
         /* To create database, we copy the one provided in assets */
