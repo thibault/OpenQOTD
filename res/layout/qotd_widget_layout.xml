@@ -3,12 +3,16 @@
 	android:id="@+id/qotd_layout"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	style="@style/QOTD.Widget" >
+	android:padding="@dimen/widget_margin"
+	android:background="@drawable/appwidget_dark_bg" >
+
 	<TextView
+	    android:padding="8dp"
 		android:id="@+id/qotd_widget_text"
 		android:text="@string/qotd_widget_text"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		style="@style/QOTD.Quotation" >
 	</TextView>
+
 </FrameLayout>
