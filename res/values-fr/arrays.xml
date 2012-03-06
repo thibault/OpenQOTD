@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_lang_preference">
+        <item>English</item>
+        <item>Français</item>
+    </string-array>
+
+    <string-array name="entryvalues_lang_preference">
+        <item>en</item>
+        <item>fr</item>
+    </string-array>
+
+    <string-array name="entries_freq_preference">
+        <item>00:30</item>
+        <item>01:00</item>
+        <item>02:00</item>
+        <item>06:00</item>
+        <item>24:00</item>
+    </string-array>
+
+    <string-array name="entryvalues_freq_preference">
+        <item>180000</item>
+        <item>360000</item>
+        <item>720000</item>
+        <item>2160000</item>
+        <item>8640000</item>
+    </string-array>
+</resources>
