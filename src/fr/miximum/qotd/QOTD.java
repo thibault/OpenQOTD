@@ -19,17 +19,15 @@
 package fr.miximum.qotd;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import fr.miximum.qotd.R;
 
 
 public class QOTD extends Activity {
@@ -37,6 +35,8 @@ public class QOTD extends Activity {
     private QuoteProvider mQuoteProvider;
 
     private static int REQUEST_PREFERENCES;
+
+    private static String APPS_URL = "http://apps.miximum.fr/en/";
 
     /** Called when the activity is first created. */
     @Override
@@ -77,7 +77,8 @@ public class QOTD extends Activity {
             startActivityForResult(new Intent(this, QOTDPreferences.class), REQUEST_PREFERENCES);
             break;
         case R.id.about:
-            showAbout();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(APPS_URL));
+            startActivity(browserIntent);
             break;
         }
 
@@ -89,23 +90,6 @@ public class QOTD extends Activity {
         if (resultCode == QOTDPreferences.RESULT_UPDATED) {
             updateQuote();
         }
-    }
-
-    /** Show an about dialog that cites data sources. */
-    protected void showAbout() {
-        // Inflate the about message contents
-        View about = getLayoutInflater().inflate(R.layout.about, null, false);
-
-        // Use default color for links
-        TextView textView = (TextView) about.findViewById(R.id.about_credits);
-        int defaultColor = textView.getTextColors().getDefaultColor();
-        textView.setTextColor(defaultColor);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.app_name);
-        builder.setView(about);
-        builder.create();
-        builder.show();
     }
 
     /** Requires a new quote, updates ui and widget */
